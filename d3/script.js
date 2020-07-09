@@ -129,18 +129,27 @@ d3.csv('processed.csv', function(data) {
 		.data(data)
 		.enter()
 		.append('rect')
-		.attr('x', function(d) {
-			return x(d.date);
+		// .attr('fill', 'none')
+		.attr('width', 6)
+		.attr('height', 22)
+		.attr('fill', function(d) {
+			return color(d.refund);
 		})
+		.attr('x', 0)
 		.attr('y', function(d) {
 			return y(d.index);
 		})
-		.attr('width', 6)
-		.attr('height', 22)
-		// .attr('stroke', 'black')
-		.attr('fill', function(d) {
-			return color(d.refund);
+		.transition()
+		.delay(function(d, i) {
+			return i * 2;
+		})
+		.duration(1000)
+		.attr('x', function(d) {
+			return x(d.date);
 		});
+	// .attr('y', function(d) {
+	// 	return y(d.index);
+	// });
 
 	rects
 		.on('mouseover', function(d, i) {
