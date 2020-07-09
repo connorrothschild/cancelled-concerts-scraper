@@ -61,6 +61,7 @@ final <- joined %>%
          !is.na(date),
          !is.na(text),
          text != "") %>% 
+  mutate(date = str_replace_all(date, fixed("."), "")) %>% 
   select(date, text)
 
 write.csv(final, "scraped.csv", row.names = FALSE)

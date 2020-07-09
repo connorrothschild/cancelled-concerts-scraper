@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    font-family: "Lato", sans-serif;
+}
+
+#group {
+    font-weight: lighter;
+    /* font-size: 1.5em; */
+    color: #0000ff;
+    /* text-decoration: underline; */
+    background-color: rgb(230, 230, 230);
+    /* border: 1px solid; */
+    padding: 3px;
+    cursor: pointer;
+}
+
+p {
+    margin-left: 5%;
+    font-size: 1.25em;
+}
+
+a {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+.my_dataviz {
+    position: relative;
+}
+
+x-axis text {
+    font-size: 2em;
+}
+
+.listening-rect {
+    fill: transparent;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 5em 1em;
+    font-family: sans-serif;
+}
+
+.tooltip {
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    text-align: left;
+    padding: 5px;
+    font: 14px sans-serif;
+    background: white;
+    border: rgba(0, 0, 0, 0.3) solid 1px;
+    pointer-events: none;
+    opacity: 0.5;
+}
