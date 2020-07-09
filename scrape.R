@@ -64,4 +64,4 @@ final <- joined %>%
   mutate(date = str_replace_all(date, fixed("."), "")) %>% 
   select(date, text)
 
-write.csv(final, "scraped.csv", row.names = FALSE)
+write.csv(final, here("data/scraped.csv"), row.names = FALSE)

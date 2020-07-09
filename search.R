@@ -1,11 +1,10 @@
-#libraries.
-# library(URLencode)
 library(rvest)
 library(tidyverse)
 library(stringr)
+library(here)
 
 #load data
-df <- readr::read_csv('data/cleaned.csv')
+df <- readr::read_csv(here('data/cleaned.csv'))
   
 df <- df %>% 
   mutate(cancellation_text = paste(`Artist/Festival Name`, "covid cancel refund"))
@@ -54,4 +53,4 @@ df <- df %>%
     article_text = ifelse(url == "https://www.billboard.com/articles/business/touring/9323647/concerts-canceled-coronavirus-list", NA, article_text)
   )
 
-write.csv(df, 'data/cleaned_w_text.csv')
+write.csv(df, here('data/cleaned_w_text.csv'))

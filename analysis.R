@@ -17,7 +17,9 @@ data <- raw_data %>%
          us_yes_no = as.factor(us_yes_no)) %>% 
   select(date, status_rescheduled_postponed_cancelled, artist_festival_name, genre, us_yes_no, refund)
 
-set_cr_theme(font = "lato")
+write.csv(data, here("data/final.csv"), row.names = FALSE)
+
+set_cr_theme(font = "adobe")
 
 data %>% 
   group_by(date) %>% 
@@ -31,8 +33,9 @@ data %>%
   annotate("label", x = as.POSIXct("2020-03-13"), y = 25,
            label = "March 13:\nPresident Trump declares national emergency") +
   labs(x = element_blank(), 
-       y = 'Number of events cancelled',
-       title = 'Concert cancellations peaked in mid-March') +
+       y = element_blank(),
+       title = 'Concert cancellations peaked in mid-March',
+       subtitle = 'Number of events cancelled') +
   drop_axis()
 
 ggsave(here('outputs/concert_cancellations_raw.jpg'))
@@ -46,12 +49,13 @@ data %>%
   geom_line() +
   geom_vline(xintercept = as.POSIXct("2020-03-13"),
              color = 'red', size = 1, linetype = 2) +
-  annotate("label", x = as.POSIXct("2020-03-13"), y = 255,
-           label = "March 13:\nPresident Trump declares national emergency") +
+  annotate("label", x = as.POSIXct("2020-03-13"), y = 100, hjust = -.1,
+           label = "March 13: President Trump \ndeclares national emergency") +
   drop_axis() +
   labs(x = element_blank(), 
-       y = 'Cumulative number of events cancelled',
-       title = 'Concert cancellations peaked in mid-March')
+       y = element_blank(),
+       title = 'Concert cancellations peaked in mid-March',
+       subtitle = 'Number of events cancelled, cumulative')
 
 ggsave(here('outputs/concert_cancellations_cumulative.jpg'))
 
