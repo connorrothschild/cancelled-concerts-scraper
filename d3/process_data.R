@@ -17,7 +17,9 @@ data <- raw_data %>%
          us_yes_no = as.factor(us_yes_no)) %>% 
   select(date, status_rescheduled_postponed_cancelled, artist_festival_name, genre, us_yes_no, refund)
 
-processed <- data %>% group_by(date) %>% 
-  mutate(index = row_number()) 
+processed <- data %>% 
+  arrange(refund) %>% 
+  group_by(date) %>% 
+  mutate(index = row_number())
 
 write.csv(processed, here('d3/processed.csv'), row.names = FALSE)
