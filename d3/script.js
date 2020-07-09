@@ -139,19 +139,14 @@ d3.csv('processed.csv', function(data) {
 		.attr('y', function(d) {
 			return y(d.index);
 		})
-		.transition()
-		.delay(function(d, i) {
-			return i * 2;
-		})
-		.duration(1000)
+		// .transition()
+		// .delay(function(d, i) {
+		// 	return i * 2;
+		// })
+		// .duration(1000)
 		.attr('x', function(d) {
 			return x(d.date);
-		});
-	// .attr('y', function(d) {
-	// 	return y(d.index);
-	// });
-
-	rects
+		})
 		.on('mouseover', function(d, i) {
 			d3.select(this).transition().duration(500).attr('fill', 'grey');
 

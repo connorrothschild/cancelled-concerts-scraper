@@ -20,4 +20,4 @@ data <- raw_data %>%
 processed <- data %>% group_by(date) %>% 
   mutate(index = row_number()) 
 
-write.csv(here('d3/processed.csv')
+write.csv(processed, here('d3/processed.csv'), row.names = FALSE)
