@@ -87,7 +87,7 @@ function init(adjustedWidth, adjustedHeight, adjustedBoundedHeight, adjustedBoun
 			// https://stackoverflow.com/a/31732581
 			d.date = new Date(d.date.replace(/-/g, '/'));
 		});
-		console.table(data);
+		// console.table(data);
 
 		var mindate = d3.min(data, function(d) {
 			return d.date;

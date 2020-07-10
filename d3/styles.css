@@ -1,16 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     height: 100vh;
     background: black;
 }
 
 * {
-    /* margin: auto; */
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
 }
@@ -18,12 +27,6 @@ body {
 
 h1 {
     color: white;
-    /* padding-left: 1.5em; */
-}
-
-a {
-    color: #0000ff;
-    text-decoration: none;
 }
 
 .tooltip {
