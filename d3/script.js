@@ -36,11 +36,16 @@ var colorLegend = d3
 	.shapeHeight(20)
 	.labelOffset(12);
 
-var legendObj = svg.append('g').attr('transform', `translate(${dimensions.width * 0.7} , 60)`).call(colorLegend);
+var legendObj = svg
+	.append('g')
+	.attr('transform', `translate(${dimensions.width * 0.7} , 60)`)
+	.call(colorLegend)
+	.attr('class', 'legend');
 
 legendObj
 	.append('text')
 	.text('Refund approach')
+	.attr('class', 'legendTitle')
 	.attr('transform', 'translate(0, -12)')
 	.attr('font-size', '1.25rem')
 	.attr('font-weight', '500');
@@ -66,6 +71,12 @@ d3.csv('processed.csv', function(data) {
 	var maxdate = d3.max(data, function(d) {
 		return d.date;
 	});
+
+	numDays = (maxdate - mindate) / 86400000;
+
+	barWidth = dimensions.boundedWidth / numDays * 0.95;
+
+	console.log(barWidth);
 
 	var ticks = [
 		new Date('2020-02-01'),
@@ -115,7 +126,7 @@ d3.csv('processed.csv', function(data) {
 		.data(data)
 		.enter()
 		.append('rect')
-		.attr('width', 6)
+		.attr('width', barWidth)
 		.attr('height', barHeight * 0.95)
 		.attr('fill', function(d) {
 			return color(d.refund);

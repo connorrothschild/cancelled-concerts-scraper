@@ -59,3 +59,12 @@ text {
     fill: none;
     stroke-width: 1px;
 }
+
+@media only screen and (max-width: 600px) {
+    .legendTitle {
+        font-size: 14px;
+    }
+
+    .legendCells {
+        font-size: 10px;
+    }
