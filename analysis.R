@@ -19,7 +19,9 @@ data <- raw_data %>%
 
 write.csv(data, here("data/final.csv"), row.names = FALSE)
 
-set_cr_theme(font = "adobe")
+# theme_set(theme_cr() + theme(plot.title.position = 'plot'))
+
+set_cr_theme('ibm')
 
 data %>% 
   group_by(date) %>% 
@@ -93,7 +95,7 @@ data %>%
   scale_fill_fixed() +
   scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0, 0.001)), labels = scales::percent_format(accuracy = 1)) +
   labs(x = element_blank(), y = element_blank(), fill = element_blank(),
-       title = "The majority of events used opt-in refunds",
+       title = "The majority of events used optional refunds",
        subtitle = "Refund approaches across all events")
 
 ggsave(here('outputs/refund_approaches.jpg'))
@@ -109,7 +111,7 @@ data %>%
   drop_axis("y") +
   scale_fill_fixed() +
   labs(y = 'Number of events', x = element_blank(), 
-       title = "Cancelled concerts gave more automatic refunds,\nwhile postponed and rescheduled ones were opt-in") +
+       title = "Cancelled concerts gave more automatic refunds,\nwhile postponed and rescheduled ones were optional") +
   theme(strip.background = element_rect(fill = 'white'))
 
 ggsave(here('outputs/refund_approach_by_cancellation_status_raw.jpg'))
@@ -130,7 +132,7 @@ data %>%
   geom_label(position = position_stack(reverse = TRUE, vjust = .5), size = 3.5) +
   scale_fill_fixed() +
   labs(x = element_blank(), y = element_blank(), fill = element_blank(),
-       title = "Cancelled concerts gave more automatic refunds,\nwhile postponed and rescheduled ones were opt-in") +
+       title = "Cancelled concerts gave more automatic refunds,\nwhile postponed and rescheduled ones were optional") +
   theme(legend.position = 'top',
         legend.direction = 'horizontal')
 
@@ -151,7 +153,7 @@ data %>%
   coord_flip() +
   scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0, 0.001)), 
                      labels = scales::percent_format(accuracy = 1)) +
-  geom_label(position = position_stack(reverse = TRUE, vjust = .5), size = 3.5) +
+  geom_label(position = position_stack(reverse = TRUE, vjust = .5), size = 2.5) +
   scale_fill_fixed() +
   labs(x = element_blank(), y = element_blank(), fill = element_blank(),
        title = "Refund approach, by genre") +
@@ -179,7 +181,7 @@ data %>%
   scale_fill_fixed() +
   drop_axis('y') +
   labs(x = element_blank(), y = element_blank(), fill = 'Refund decision',
-       title = "Individual artists more likely than festivals to provide automatic refunds") +
+       title = "Individual artists more likely than festivals\nto provide automatic refunds") +
   guides(fill = guide_legend(reverse = TRUE))
 
 ggsave(here('outputs/refund_approach_by_festival_vs_individual.jpg'))

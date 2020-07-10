@@ -24,7 +24,7 @@ bounds
 	.attr('height', dimensions.boundedHeight);
 
 // Color legend.
-var colorScale = d3.scaleOrdinal().domain([ 'Automatic', 'Unknown', 'Optional', 'None' ]).range(d3.schemeCategory10);
+var colorScale = d3.scaleOrdinal().domain([ 'Automatic', 'None', 'Optional', 'Unknown' ]).range(d3.schemeCategory10);
 
 var colorLegend = d3
 	.legendColor()
@@ -147,7 +147,8 @@ d3.csv('processed.csv', function(data) {
 						'<div class = "tiptitle"><span style="font-weight:bold;">' +
 							d.artist_festival_name +
 							'</span>, ' +
-							'Cancelled on ' +
+							d.status_rescheduled_postponed_cancelled.toLowerCase() +
+							' on ' +
 							formatMonthDay(d.date) +
 							'</div>' +
 							'<i>Genre: </i>' +
