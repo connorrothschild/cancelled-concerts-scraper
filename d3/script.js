@@ -1,11 +1,11 @@
 let dimensions = {
-	width  : window.innerWidth * 0.8,
+	width  : window.innerWidth * 0.9,
 	height : window.innerHeight * 0.8,
 	margin : {
-		top    : 15,
-		right  : 15,
+		top    : 65,
+		right  : 65,
 		bottom : 65,
-		left   : 60
+		left   : 65
 	}
 };
 dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
@@ -22,7 +22,6 @@ bounds
 	.append('rect')
 	.attr('width', dimensions.boundedWidth)
 	.attr('height', dimensions.boundedHeight);
-
 // Color legend.
 var colorScale = d3.scaleOrdinal().domain([ 'Automatic', 'None', 'Optional', 'Unknown' ]).range(d3.schemeCategory10);
 
@@ -108,8 +107,8 @@ d3.csv('processed.csv', function(data) {
 		.attr('class', 'x axis');
 
 	// y axis
-	var yTicks = [ 0, 10, 20, 30 ];
-	var yTickLabels = [ 0, 10, 20, 30 ];
+	var yTicks = [ 0, 10, 20 ];
+	var yTickLabels = [ 0, 10, 20 ];
 
 	const y = d3.scaleLinear().domain([ 0, max_num_events ]).range([ dimensions.boundedHeight, 0 ]);
 
@@ -135,8 +134,6 @@ d3.csv('processed.csv', function(data) {
 		.attr('y', function(d) {
 			return y(d.index);
 		});
-
-	console.log(y(25));
 
 	rects
 		.transition()

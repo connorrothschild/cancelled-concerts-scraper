@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-a {
-    color: #0000ff;
-    text-decoration: none;
-}
-
-.my_dataviz {
-    position: relative;
-}
-
-.listening-rect {
-    fill: transparent;
-}
-
 body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 5em 1em;
+    height: 100vh;
     background: black;
 }
 
 * {
-    margin: auto;
+    /* margin: auto; */
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
+}
+
+
+h1 {
+    color: white;
+    /* padding-left: 1.5em; */
+}
+
+a {
+    color: #0000ff;
+    text-decoration: none;
 }
 
 .tooltip {
@@ -52,6 +52,7 @@ text {
 
 .axis {
     color: white;
+    font-size: 16px;
 }
 
 .axis path {
@@ -68,3 +69,12 @@ text {
     .legendCells {
         font-size: 10px;
     }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .axis {
+        font-size: 10px;
+    }
+}

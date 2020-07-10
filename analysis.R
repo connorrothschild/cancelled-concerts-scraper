@@ -186,4 +186,52 @@ data %>%
 
 ggsave(here('outputs/refund_approach_by_festival_vs_individual.jpg'))
 
+data %>% 
+  mutate(week = lubridate::week(date)) %>% 
+  group_by(week) %>% 
+  count(refund) %>% 
+  mutate(sum = sum(n),
+         perc = n/sum) %>% 
+  ggplot(aes(x = week, y = sum)) +
+  geom_col(aes(fill = refund)) +
+  scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0, 0.001))) +
+  drop_axis("y") +
+  scale_fill_fixed() +
+  labs(y = 'Number of events', x = 'Week', fill = element_blank(), 
+       title = "Refund approaches by week of cancellation",
+       subtitle = "Raw counts")
 
+data %>% 
+  mutate(week = lubridate::week(date)) %>% 
+  group_by(week) %>% 
+  count(refund) %>% 
+  mutate(sum = sum(n),
+         perc = n/sum) %>% 
+  ggplot(aes(x = week, y = perc)) +
+  geom_col(aes(fill = refund)) +
+  scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0, 0.001)),
+                     labels = scales::percent_format()) +
+  drop_axis("y") +
+  scale_fill_fixed() +
+  labs(y = 'Percent of events', x = 'Week', fill = element_blank(), 
+       title = "Refund approaches by week of cancellation", 
+       subtitle = "Percent")
+
+data %>% 
+  mutate(before_mar_12 = ifelse(date > "2020-03-13", "After March 13", "Before March 13")) %>% 
+  group_by(before_mar_12) %>% 
+  count(refund) %>% 
+  mutate(sum = sum(n),
+         perc = n/sum) %>% 
+  ggplot(aes(x = reorder(before_mar_12, n), y = perc)) +
+  geom_col(aes(fill = refund)) +
+  scale_y_continuous(expand = ggplot2::expand_scale(mult = c(0, 0.001)),
+                     labels = scales::percent_format()) +
+  drop_axis("y") +
+  scale_fill_fixed() +
+  labs(subtitle = 'Percent of events', 
+       y = element_blank(), x = element_blank(), fill = element_blank(), 
+       title = "Refund approaches by time period of cancellation")
+
+ggsave(here("outputs/before_after_mar13.jpg"))
+         
