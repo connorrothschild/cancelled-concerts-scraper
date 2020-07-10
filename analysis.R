@@ -17,7 +17,7 @@ data <- raw_data %>%
          us_yes_no = as.factor(us_yes_no)) %>% 
   select(date, status_rescheduled_postponed_cancelled, artist_festival_name, genre, us_yes_no, refund)
 
-write.csv(data, here("data/final.csv"), row.names = FALSE)
+write.csv(data, here("data/final/final.csv"), row.names = FALSE)
 
 # theme_set(theme_cr() + theme(plot.title.position = 'plot'))
 

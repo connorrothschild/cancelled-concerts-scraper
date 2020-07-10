@@ -4,7 +4,7 @@ library(tidyverse)
 library(cr)
 library(here)
 
-data <- readr::read_csv(here("data/final.csv"))
+data <- readr::read_csv(here("data/final/final.csv"))
 
 processed <- data %>% 
   arrange(refund) %>% 
