@@ -1,4 +1,4 @@
-# cancelled-covid-concerts
+# Concerts Cancelled During COVID-19
 
 This repository contains scripts for scraping, analyzing, and visualizing the data contained in Billboard's article [Here Are All the Major Music Events Canceled Due to Coronavirus](https://www.billboard.com/articles/business/touring/9323647/concerts-canceled-coronavirus-list). This dataset was used in a recently-submitted academic paper (which I will link to here if it is accepted!).
 
